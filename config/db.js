@@ -7,7 +7,7 @@ const pool = new Pool({
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     database: process.env.DB_NAME,
-    ssl: { rejectUnauthorized: false }, // Enforce SSL for a secure connection
+    ssl: { rejectUnauthorized: false }, 
 });
 
 pool.connect()
