@@ -6,7 +6,12 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    database: process.env.DB_NAME
+    database: process.env.DB_NAME,
+    ssl: { rejectUnauthorized: false }, // Enforce SSL for a secure connection
 });
 
-module.exports = pool; 
+pool.connect()
+    .then(() => console.log('Connected to the database securely'))
+    .catch((err) => console.error('Database connection error:', err));
+
+module.exports = pool;
